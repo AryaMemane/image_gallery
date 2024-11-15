@@ -1,0 +1,46 @@
+ {% extends 'base.html' %}
+ {% load static %}
+
+ {% block content %}
+ <div class="container mt-4">
+     <h2>My Uploaded Pins</h2>
+     <div class="row row-cols-1 row-cols-md-3 g-4">
+         {% for pin in pins %}
+         <div class="col">
+             <div class="card h-100">
+                 <img class="card-img-top" src="{{ pin.image.url }}" alt="{{ pin.title }}">
+                 <div class="card-body">
+                     <h5 class="card-title">{{ pin.title }}</h5>
+                     <p class="card-text">{{ pin.description }}</p>
+                 </div>
+                 <div class="card-footer d-flex justify-content-between">
+                     <!-- Like Button -->
+                     <a href="{% url 'like_pin' pin.id %}" class="btn btn-sm btn-outline-primary">
+                         <i class="fa-solid fa-heart text-danger"></i> Like ({{ pin.likes }})
+                     </a>
+ 
+                     <!-- Download Button -->
+                     <a href="{% url 'download_pin' pin.id %}" class="btn btn-sm btn-outline-secondary">
+                         <i class="fa-solid fa-download text-primary"></i> Download
+                     </a>
+ 
+                     <!-- Delete Button -->
+                     <form method="POST" action="{% url 'delete_pin' pin.id %}" class="d-inline">
+                         {% csrf_token %}
+                         <button type="submit" class="btn btn-sm btn-outline-danger"
+                                 onclick="return confirm('Are you sure you want to delete this pin?');">
+                             <i class="fa-solid fa-trash"></i> Delete
+                         </button>
+                     </form>
+                 </div>
+             </div>
+         </div>
+         {% empty %}
+         <p>You have not uploaded any pins yet.</p>
+         {% endfor %}
+     </div>
+ </div>
+ {% endblock %}
+
+
+ 

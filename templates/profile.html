@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <h2>Profile</h2>
+    <p>Username: {{ request.user.username }}</p>
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+.pin-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 20px;
+}
+
+.pin {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.pin img {
+    width: 100%;
+    height: auto;
+}
+
+.pin-content {
+    padding: 10px;
+}

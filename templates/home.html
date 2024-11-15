@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card-columns">
+        {% for pin in pins %}
+        <div class="card">
+            <img class="card-img-top" src="{{ pin.image.url }}" alt="{{ pin.title }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ pin.title }}</h5>
+                <p class="card-text">{{ pin.description }}</p>
+                <div class="d-flex justify-content-end">
+                    <a href="{% url 'like_pin' pin.id %}" class="btn btn-sm btn-outline-primary me-2">
+                        <i class="fa-solid fa-heart text-danger"></i> Like ({{ pin.likes }})
+                    </a>
+                    <a href="{% url 'download_pin' pin.id %}" class="btn btn-sm btn-outline-secondary">
+                        <i class="fa-solid fa-download text-primary"></i> Download
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
