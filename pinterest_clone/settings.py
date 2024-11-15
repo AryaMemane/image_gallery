@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-h7%m*)axfs2z+(xcudv+54p)tji+&z)k#1-^p%3clz_xeeg5-k
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['pinterest-clone-3cmz.onrender.com']
 
 
 # Application definition
